@@ -240,13 +240,16 @@
         sourceContainer.removeChild(draggedElement)
       }
 
-      if (draggedElement) {
-        const src = dataTransfer.getData('text/plain')
-        const imgElement = createItem(src)
-        currentTarget.appendChild(imgElement)
+      if (currentTarget.id !== "selector-items"){
+        if (draggedElement) {
+          const src = dataTransfer.getData('text/plain')
+          const imgElement = createItem(src)
+          currentTarget.appendChild(imgElement)
+        }
+  
+        currentTarget.classList.remove('drag-over')
       }
-
-      currentTarget.classList.remove('drag-over')
+      
       currentTarget.querySelector('.drag-preview')?.remove()
     }
 
