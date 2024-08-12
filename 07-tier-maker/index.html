@@ -227,7 +227,12 @@
       if (dataTransfer.types.includes('Files')) {
         currentTarget.classList.remove('drag-files')
         const { files } = dataTransfer
-        useFilesToCreateItems(files)
+        const imageFiles = Array.from(files).filter( file => file.type.startsWith('image/'))
+        if (imageFiles.length > 0)
+          useFilesToCreateItems(imageFiles)
+        else{
+          alert('Solo se permiten archivos de imagen');
+        }
       }
     }
 
